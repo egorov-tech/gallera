@@ -3,6 +3,7 @@ import { Collection } from '../../../entities/collection';
 import { CategoryFilter, SearchFilter } from '../../../features/filter-collections';
 import { Pagination } from '../../../shared/ui';
 import { fetchCollections } from '../../../shared/api';
+import { filterCollectionsBySearch } from '../../../shared/lib/helpers';
 import './MainPage.css';
 
 /**
@@ -29,11 +30,17 @@ export const MainPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // Ответ на устаревший запрос (категорию или страницу уже сменили) отбрасывается.
+        let stale = false;
         setLoading(true);
         fetchCollections(categoriesActive, page).then((data) => {
+            if (stale) return;
             if (data) setCollections(data);
             setLoading(false);
         });
+        return () => {
+            stale = true;
+        };
     }, [categoriesActive, page]);
 
     const handleCategoryChange = (idx) => {
@@ -41,9 +48,7 @@ export const MainPage = () => {
         setPage(1);
     };
 
-    const filtered = collections.filter(
-        (c) => c.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    const filtered = filterCollectionsBySearch(collections, searchValue);
 
     return (
         <div className="app-container">

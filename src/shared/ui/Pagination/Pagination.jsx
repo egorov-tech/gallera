@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Pagination.css';
 
 /**
@@ -23,10 +22,4 @@ export const Pagination = ({ currentPage, totalPages = 5, onPageChange }) => {
             ))}
         </ul>
     );
-};
-
-Pagination.propTypes = {
-    currentPage: PropTypes.number.isRequired,
-    totalPages: PropTypes.number,
-    onPageChange: PropTypes.func.isRequired
 };

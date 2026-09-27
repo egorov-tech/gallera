@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CATEGORIES } from '../model/constants';
 
 /**
@@ -22,9 +21,4 @@ export const CategoryFilter = ({ activeCategory, onCategoryChange }) => {
             ))}
         </ul>
     );
-};
-
-CategoryFilter.propTypes = {
-    activeCategory: PropTypes.number.isRequired,
-    onCategoryChange: PropTypes.func.isRequired
 };

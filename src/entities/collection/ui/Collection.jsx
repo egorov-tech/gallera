@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import './Collection.css';
 
 /**
@@ -48,12 +47,6 @@ const Lightbox = ({ src, alt, onClose }) => {
             </div>
         </div>
     );
-};
-
-Lightbox.propTypes = {
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    onClose: PropTypes.func.isRequired,
 };
 
 /**
@@ -134,10 +127,4 @@ export const Collection = ({ name, images, index = 0 }) => {
             )}
         </>
     );
-};
-
-Collection.propTypes = {
-    name: PropTypes.string.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    index: PropTypes.number,
 };

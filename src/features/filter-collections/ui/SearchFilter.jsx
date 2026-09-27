@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /**
  * Компонент поиска по названию коллекции
@@ -33,9 +32,4 @@ export const SearchFilter = ({ value, onChange }) => {
             />
         </div>
     );
-};
-
-SearchFilter.propTypes = {
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
 };
